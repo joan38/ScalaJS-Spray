@@ -11,6 +11,5 @@ libraryDependencies ++= Seq(
   "com.lihaoyi" %% "autowire" % "0.2.3",
   "io.spray" %% "spray-can" % "1.3.1",
   "io.spray" %% "spray-routing" % "1.3.1",
-  "com.typesafe.akka" %% "akka-actor" % "2.3.2",
-  "com.scalatags" %% "scalatags" % "0.4.1"
+  "com.typesafe.akka" %% "akka-actor" % "2.3.2"
 )

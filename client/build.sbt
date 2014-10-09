@@ -14,10 +14,3 @@ libraryDependencies ++= Seq(
 ScalaJSKeys.jsDependencies += scala.scalajs.sbtplugin.RuntimeDOM
 
 skip in ScalaJSKeys.packageJSDependencies := false
-
-// uTest settings
-utest.jsrunner.Plugin.utestJsSettings
-
-ScalaJSKeys.persistLauncher in Compile := true
-
-ScalaJSKeys.persistLauncher in Test := false
