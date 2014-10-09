@@ -35,11 +35,11 @@ trait MyService extends HttpService {
               </head>
               <body>
                 <!-- Include JavaScript dependencies -->
-                <script type="text/javascript" src="ScalaJS-client-jsdeps.js"></script>
+                <script type="text/javascript" src="/scalajs-client-jsdeps.js"></script>
                 <!-- Include Scala.js compiled code -->
-                <script type="text/javascript" src="ScalaJS-client-fastopt.js"></script>
+                <script type="text/javascript" src="/scalajs-client-fastopt.js"></script>
                 <!-- Run JSApp -->
-                <script type="text/javascript" src="ScalaJS-client-launcher.js"></script>
+                <script type="text/javascript" src="/scalajs-client-launcher.js"></script>
               </body>
             </html>
           }

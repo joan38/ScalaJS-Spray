@@ -11,7 +11,6 @@ import scala.concurrent.duration._
  * Created by Joan on 06/10/2014.
  */
 object Boot extends App {
-
   // we need an ActorSystem to host our application in
   implicit val system = ActorSystem("on-spray-can")
 
