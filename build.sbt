@@ -14,26 +14,32 @@ lazy val client = project.in(file("client"))
 
 lazy val server = project.in(file("server")).settings(
   (resources in Compile) ++= {
-    (fastOptJS in(client, Compile)).value
     Seq(
       (artifactPath in(client, Compile, fastOptJS)).value,
+      (artifactPath in(client, Compile, fullOptJS)).value,
       (artifactPath in(client, Compile, packageJSDependencies)).value,
-      (artifactPath in(client, Compile, packageScalaJSLauncher)).value
+      (artifactPath in(client, Compile, packageScalaJSLauncher)).value,
+      new File("client/target/scala-2.11/scalajs-client-fastopt.js.map")
     )
   }
 )
 
-//val moveFullOptResources = Def.task {
-//  (fullOptJS in(client, Compile)).value
+run := (run in(server, Compile)).evaluated
+
+run <<= (run in(server, Compile)) dependsOn (fastOptJS in(client, Compile)) dependsOn (fullOptJS in(client, Compile))
+
+reStart <<= reStart in(server, Compile) dependsOn (fastOptJS in(client, Compile))
+
+//lazy val moveFastOptResources = Def.task {
+//  println("====================")
+//  val clientTarget = (crossTarget in client).value.toPath
+//  val serverResources = (resourceDirectory in (server, Compile)).value.toPath
 //  IO.copy(Seq(
-//    (artifactPath in(client, Compile, fullOptJS)).value,
-//    (artifactPath in(client, Compile, packageJSDependencies)).value,
-//    (artifactPath in(client, Compile, packageScalaJSLauncher)).value
-//  ) map { file =>
-//    (file, new File((resourceDirectory in (server, Compile)).value, file.getName))
-//  })
+//    (resourceDirectory in(client, Compile)).value.toPath.resolve("")
+//  ) map (f => (f.toFile, serverResources.resolve(f).toFile)))
+//  println("====================")
 //}
-//
+
 //run := (run in(server, Compile) dependsOn moveFullOptResources).evaluated
 
 
