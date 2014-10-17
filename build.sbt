@@ -13,7 +13,7 @@ lazy val root = project.in(file(".")).aggregate(client, server)
 lazy val client = project.in(file("client"))
 
 lazy val server = project.in(file("server")).settings(
-  (resources in Compile) ++= { // println((target in (client, Compile)).value.toPath.resolve("scala-2.11/scalajs-client-fastopt.js.map").toString)
+  (resources in Compile) ++= {
     Seq(
       (artifactPath in(client, Compile, fastOptJS)).value,
       (artifactPath in(client, Compile, fullOptJS)).value,
